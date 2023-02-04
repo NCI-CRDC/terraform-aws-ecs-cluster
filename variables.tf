@@ -14,6 +14,7 @@ variable "env" {
     error_message = "valid values are 'dev', 'qa', 'stage', 'prod', and 'nonprod'"
   }
 }
+
 variable "program" {
   type        = string
   description = "the program associated with the application"
@@ -23,4 +24,14 @@ variable "program" {
     condition     = contains(["crdc", "ccdi", "ctos"], var.program)
     error_message = "valid values for program are 'crdc', 'ccdi', and 'ctos'"
   }
+}
+
+variable "container_insights_enabled" {
+  type        = bool
+  description = "whether to enable container insights for the services running in the cluster"
+  default     = false
+}
+
+variable "resource_name_suffix" {
+  type = string
 }
